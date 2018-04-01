@@ -36,6 +36,9 @@ public class MyNavigationItemSelectedListener implements NavigationView.OnNaviga
                 case R.id.nav_search:
                     activityClass = SearchActivity.class;
                     break;
+                case R.id.nav_music:
+                    activityClass = MusicActivity.class;
+                    break;
             }
 
             if (activityClass != null) {
