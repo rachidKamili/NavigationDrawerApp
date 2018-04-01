@@ -18,11 +18,12 @@
             android:layout_height="?attr/actionBarSize" />
 
         <!--Contenu de l'activite-->
-        <TextView
-            android:id="@+id/test"
+        <ListView
+            android:id="@+id/music_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Music Activity"/>
+            android:layout_height="wrap_content">
+
+        </ListView>
 
 
     </LinearLayout>
