@@ -1,6 +1,7 @@
 package me.kamili.rachid.navigationdrawerapp;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -35,8 +36,8 @@ public class MusicActivity extends BaseActivity {
             values.add((field.getName()).substring(0, 1).toUpperCase() + (field.getName()).substring(1));
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_2, android.R.id.text1, values);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
         musicList.setAdapter(adapter);
 
@@ -51,16 +52,21 @@ public class MusicActivity extends BaseActivity {
                     releaseMediaPlayer();
                     mMediaPlayer = MediaPlayer.create(activity, rawId);
                     mMediaPlayer.start();
+
+                    int count = parent.getChildCount();
+                    for (int i = 0; i < count; i++) {
+                        parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
+                    view.setBackgroundColor(Color.LTGRAY);
+
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
 
-                String itemValue = (String) musicList.getItemAtPosition(position);
-
                 // Show Alert
-                Toast.makeText(activity,
-                        "Position :"+position+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
-                        .show();
+//                Toast.makeText(activity,
+//                        "Position :"+position+"  ListItem : " +(String) musicList.getItemAtPosition(position) , Toast.LENGTH_LONG)
+//                        .show();
             }
         });
 
