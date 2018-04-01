@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">NavigationDrawer App</string>
+    <string name="app_name">Navigation Drawer App</string>
+    <string name="test_name">Test App</string>
 </resources>

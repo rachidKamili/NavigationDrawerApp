@@ -19,7 +19,7 @@
 
         <!--Contenu de l'activite-->
         <TextView
-            android:text="Home page"
+            android:text="Search page"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
