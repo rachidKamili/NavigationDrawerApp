@@ -1,8 +1,11 @@
 package me.kamili.rachid.navigationdrawerapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,16 +21,20 @@ import java.util.concurrent.Executors;
  */
 
 public class BaseActivity extends AppCompatActivity {
-    private DrawerLayout mDrawerLayout;
+    protected DrawerLayout mDrawerLayout;
+    protected ActionBar actionBar;
+    protected NavigationView navigationView;
+    private int menuItem;
     //private ActionBarDrawerToggle drawerToggle;
 
-    protected void onCreateDrawer(final Context currentContext, int menuItem) {
+    protected void onCreateDrawer(final Context currentContext, int idItem) {
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
+        menuItem = idItem;
+        initiateToolbar();
+        configActionBar();
 
-        initiateToolbarAndActionBar();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setCheckedItem(menuItem);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -69,19 +76,34 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    protected void initiateToolbarAndActionBar() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        navigationView.setCheckedItem(menuItem);
+    }
+
+    private void initiateToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionBar = getSupportActionBar();
+    }
+
+    protected void configActionBar() {
+
+        //show a back arrow instead of home
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+        final Drawable upArrow = getResources().getDrawable(R.drawable.ic_arrow_back);
+        upArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+        actionBar.setHomeAsUpIndicator(upArrow);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
+                onBackPressed();
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
