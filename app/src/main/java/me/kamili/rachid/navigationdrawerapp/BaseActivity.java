@@ -25,12 +25,14 @@ public class BaseActivity extends AppCompatActivity {
     protected ActionBar actionBar;
     protected NavigationView navigationView;
     private int menuItem;
+    private int title;
     //private ActionBarDrawerToggle drawerToggle;
 
-    protected void onCreateDrawer(final Context currentContext, int idItem) {
+    protected void onCreateDrawer(final Context currentContext, int idItem, int titleId) {
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         menuItem = idItem;
+        title = titleId;
         initiateToolbar();
         configActionBar();
 
@@ -96,6 +98,7 @@ public class BaseActivity extends AppCompatActivity {
         final Drawable upArrow = getResources().getDrawable(R.drawable.ic_arrow_back);
         upArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         actionBar.setHomeAsUpIndicator(upArrow);
+        actionBar.setTitle(title);
     }
 
     @Override

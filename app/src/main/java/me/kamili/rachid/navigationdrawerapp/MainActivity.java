@@ -12,7 +12,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        super.onCreateDrawer(this,R.id.nav_home);
+        super.onCreateDrawer(this,R.id.nav_home,R.string.home_title);
 
     }
 
@@ -23,6 +23,7 @@ public class MainActivity extends BaseActivity {
         Drawable homeMenu = getResources().getDrawable(R.drawable.ic_menu);
         actionBar.setHomeAsUpIndicator(homeMenu);
         actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle(R.string.home_title);
     }
 
     @Override

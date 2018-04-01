@@ -8,6 +8,6 @@ public class SearchActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        super.onCreateDrawer(this,R.id.nav_search);
+        super.onCreateDrawer(this,R.id.nav_search,R.string.search_title);
     }
 }
