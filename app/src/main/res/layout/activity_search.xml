@@ -18,10 +18,10 @@
             android:layout_height="?attr/actionBarSize" />
 
         <!--Contenu de l'activite-->
-        <TextView
-            android:text="Search page"
+        <WebView
+            android:id="@+id/webview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>

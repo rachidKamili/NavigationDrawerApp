@@ -1,20 +1,14 @@
 package me.kamili.rachid.navigationdrawerapp;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-
-import java.util.concurrent.Executors;
 
 /**
  * Created by Admin on 4/1/2018.
@@ -26,6 +20,7 @@ public class BaseActivity extends AppCompatActivity {
     protected NavigationView navigationView;
     private int menuItem;
     private int title;
+    protected Toolbar mToolbar;
     //private ActionBarDrawerToggle drawerToggle;
 
     protected void onCreateDrawer(final Context currentContext, int idItem, int titleId) {
@@ -33,13 +28,14 @@ public class BaseActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawer_layout);
         menuItem = idItem;
         title = titleId;
+
         initiateToolbar();
         configActionBar();
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setCheckedItem(menuItem);
         navigationView.setNavigationItemSelectedListener(
-                new MyNavigationItemSelectedListener(currentContext,mDrawerLayout)
+                new MyNavigationItemSelectedListener(currentContext, mDrawerLayout)
         );
 
     }
@@ -51,8 +47,8 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void initiateToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
         actionBar = getSupportActionBar();
     }
 
