@@ -39,42 +39,8 @@ public class BaseActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         navigationView.setCheckedItem(menuItem);
         navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                        if (!menuItem.isChecked()) {
-
-                            Class<? extends Activity> activityClass = null;
-                            switch (menuItem.getItemId()) {
-                                case R.id.nav_home:
-                                    activityClass = MainActivity.class;
-                                    break;
-                                case R.id.nav_search:
-                                    activityClass = SearchActivity.class;
-                                    break;
-                            }
-
-                            if (activityClass != null) {
-                                final Class<?> finalActivityClass = activityClass;
-                                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Intent intent = new Intent(currentContext, finalActivityClass);
-                                        //intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        startActivity(intent);
-                                    }
-                                });
-                            }
-
-                            menuItem.setChecked(true);
-                        }
-
-                        mDrawerLayout.closeDrawers();
-                        return true;
-                    }
-                });
+                new MyNavigationItemSelectedListener(currentContext,mDrawerLayout)
+        );
 
     }
 
