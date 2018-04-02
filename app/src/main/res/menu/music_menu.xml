@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/play_music"
+        android:icon="@drawable/ic_play_arrow"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Play" />
+
+    <item
+        android:id="@+id/pause_music"
+        android:icon="@drawable/ic_pause"
+        android:orderInCategory="101"
+        app:showAsAction="always"
+        android:title="Pause" />
+
+    <item
+        android:id="@+id/restart_music"
+        android:icon="@drawable/ic_refresh"
+        android:orderInCategory="102"
+        app:showAsAction="always"
+        android:title="Play" />
+
+    <item
+        android:id="@+id/stop_music"
+        android:icon="@drawable/ic_stop"
+        android:orderInCategory="103"
+        app:showAsAction="always"
+        android:title="Stop" />
+</menu>
