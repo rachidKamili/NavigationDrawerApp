@@ -5,4 +5,5 @@
     <string name="music_title">Music page</string>
     <string name="about_title">About</string>
     <string name="about_message">This app created by Rachid Kamili, framed by Manroop</string>
+    <string name="preference_file_key">me.kamili.rachid.navigationdrawerapp.PREFERENCE_FILE_KEY</string>
 </resources>

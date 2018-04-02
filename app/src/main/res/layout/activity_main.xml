@@ -6,26 +6,66 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/toolbar_layout"/>
+    <include layout="@layout/toolbar_layout" />
 
     <LinearLayout
-        android:layout_marginTop="?attr/actionBarSize"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical">
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
 
         <!--Contenu de l'activite-->
-        <TextView
-            android:text="Home page"
+        <ExpandableListView
+            android:id="@+id/expandableListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <android.support.v7.widget.CardView
+            android:layout_margin="25dp"
+            app:contentPadding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Add a player:"
+                android:textSize="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <LinearLayout
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:hint="Player Name"
+                    android:id="@+id/etPlayer"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:hint="Sport"
+                    android:id="@+id/etSport"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:text="Save Player"
+                    android:onClick="savePlayer"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
-    <include layout="@layout/navigation_layout"/>
+    <include layout="@layout/navigation_layout" />
 
 </android.support.v4.widget.DrawerLayout>

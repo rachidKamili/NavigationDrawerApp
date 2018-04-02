@@ -1,4 +1,4 @@
-package me.kamili.rachid.navigationdrawerapp;
+package me.kamili.rachid.navigationdrawerapp.tools;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import java.util.concurrent.Executors;
+
+import me.kamili.rachid.navigationdrawerapp.MainActivity;
+import me.kamili.rachid.navigationdrawerapp.MusicActivity;
+import me.kamili.rachid.navigationdrawerapp.R;
+import me.kamili.rachid.navigationdrawerapp.SearchActivity;
 
 /**
  * Created by Admin on 4/1/2018.
