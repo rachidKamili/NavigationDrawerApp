@@ -3,4 +3,6 @@
     <string name="home_title">Home page</string>
     <string name="search_title">Search page</string>
     <string name="music_title">Music page</string>
+    <string name="about_title">About</string>
+    <string name="about_message">This app created by Rachid Kamili, framed by Manroop</string>
 </resources>

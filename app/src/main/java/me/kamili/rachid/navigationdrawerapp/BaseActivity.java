@@ -1,5 +1,6 @@
 package me.kamili.rachid.navigationdrawerapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -8,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 /**
@@ -21,10 +24,11 @@ public class BaseActivity extends AppCompatActivity {
     private int menuItem;
     private int title;
     protected Toolbar mToolbar;
-    //private ActionBarDrawerToggle drawerToggle;
+    private Context mContext;
 
-    protected void onCreateDrawer(final Context currentContext, int idItem, int titleId) {
+    protected void onCreateDrawer(Context currentContext, int idItem, int titleId) {
 
+        mContext = currentContext;
         mDrawerLayout = findViewById(R.id.drawer_layout);
         menuItem = idItem;
         title = titleId;
@@ -35,7 +39,7 @@ public class BaseActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         navigationView.setCheckedItem(menuItem);
         navigationView.setNavigationItemSelectedListener(
-                new MyNavigationItemSelectedListener(currentContext, mDrawerLayout)
+                new MyNavigationItemSelectedListener(mContext, mDrawerLayout)
         );
 
     }
@@ -64,11 +68,23 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.overflow_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
-
+                return true;
+            case R.id.about_dialog:
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage(R.string.about_message)
+                        .setTitle(R.string.about_title);
+                builder.create().show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
