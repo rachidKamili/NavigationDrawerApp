@@ -6,3 +6,5 @@ What you should do to avoid ANR and make your application seem responsive to use
 	- For games specifically, do calculations for moves in a worker thread.
 	- If your application has a time-consuming initial setup phase, consider showing a splash screen or rendering the main view as quickly as possible, indicate that loading is in progress and fill the information asynchronously. In either case, you should indicate somehow that progress is being made, lest the user perceive that the application is frozen.
 	- Use performance tools such as Systrace and Traceview to determine bottlenecks in your app's responsiveness. ///???
+
+Source: https://developer.android.com/training/articles/perf-anr.html
