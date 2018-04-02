@@ -1,0 +1,8 @@
+Android will display the ANR dialog for a particular application when it detects one of the following conditions:
+	- No response to an input event (such as key press or screen touch events) within 5 seconds.
+	- A BroadcastReceiver hasn't finished executing within 10 seconds.
+What you should do to avoid ANR and make your application seem responsive to users:
+	- If your application is doing work in the background in response to user input, show that progress is being made (such as with a ProgressBar in your UI).
+	- For games specifically, do calculations for moves in a worker thread.
+	- If your application has a time-consuming initial setup phase, consider showing a splash screen or rendering the main view as quickly as possible, indicate that loading is in progress and fill the information asynchronously. In either case, you should indicate somehow that progress is being made, lest the user perceive that the application is frozen.
+	- Use performance tools such as Systrace and Traceview to determine bottlenecks in your app's responsiveness. ///???
